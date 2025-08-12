@@ -16,8 +16,9 @@ public class ViewForm extends JPanel {
     private JPasswordField txtPassword;
     private JButton btnLogin, btnExit;
 
+    // 1. Modifica la interfaz para que el rol sea un parámetro
     public interface LoginListener {
-        void onLoginSuccess(String username);
+        void onLoginSuccess(String username, String rol);
     }
 
     private LoginListener loginListener;
@@ -72,17 +73,19 @@ public class ViewForm extends JPanel {
         String password = new String(txtPassword.getPassword());
 
         try (Connection conn = DBConnection.getConnection()) {
-            String sql = "SELECT * FROM superUsers WHERE username=? AND password=?";
+            // 2. Modifica la consulta SQL para obtener el rol del usuario
+            String sql = "SELECT rol FROM superUsers WHERE username=? AND password=?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setString(2, password);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
+                String rol = rs.getString("rol"); // 3. Obtén el rol del resultado
                 JOptionPane.showMessageDialog(this, "Login exitoso. ¡Bienvenido " + username + "!");
 
                 if (loginListener != null) {
-                    loginListener.onLoginSuccess(username);
+                    loginListener.onLoginSuccess(username, rol); // 4. Pasa el rol al listener
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.");
