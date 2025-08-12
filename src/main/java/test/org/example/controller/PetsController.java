@@ -15,12 +15,18 @@ public class PetsController {
     public PetsController(ViewPets viewPets) {
         this.viewPets = viewPets;
 
-        loadPetsFromDB();
+        // Listener para el botón "Agregar Mascota"
+        this.viewPets.getBtnAdd().addActionListener(e -> addPet());
 
+        // Listener para el botón "Cargar Mascotas"
+        this.viewPets.getBtnLoad().addActionListener(e -> {
+            loadOwnersIntoComboBox(); // <-- AÑADE ESTA LÍNEA
+            loadPetsFromDB();
+        });
+
+        // Llamada inicial para cargar datos al iniciar
         loadOwnersIntoComboBox();
-
-        viewPets.getBtnAdd().addActionListener(e -> addPet());
-        viewPets.getBtnLoad().addActionListener(e -> loadPetsFromDB());
+        loadPetsFromDB();
     }
 
     private void loadOwnersIntoComboBox() {
