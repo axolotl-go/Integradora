@@ -1,6 +1,6 @@
 package test.org.example;
 
-import test.org.example.view.ViewAppointments;
+import test.org.example.view.ViewCitas;
 import test.org.example.view.ViewForm;
 import test.org.example.view.ViewPets;
 import test.org.example.view.ViewUsers;
@@ -23,7 +23,7 @@ public class Main {
             ViewForm loginPanel = new ViewForm();
             ViewUsers clientesPanel = new ViewUsers();
             ViewPets mascotasPanel = new ViewPets();
-            ViewAppointments citasPanel = new ViewAppointments();
+            ViewCitas citasPanel = new ViewCitas();
 
             // Registrar pantallas en el CardLayout
             contentPanel.add(loginPanel, "Login");

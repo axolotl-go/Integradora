@@ -2,7 +2,7 @@ package test.org.example.view;
 
 import test.org.example.controller.PetsController;
 import test.org.example.model.Pet;
-import test.org.example.table.MascotaTableModel;
+import test.org.example.table.PetTableModel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,7 +15,7 @@ public class ViewPets extends JPanel {
     private JComboBox<String> cmbDueños;
     private JButton btnAgregar, btnCargar;
     private JTable tblMascotas;
-    private MascotaTableModel tableModel;
+    private PetTableModel tableModel;
 
     private PetsController controller;
 
@@ -61,7 +61,7 @@ public class ViewPets extends JPanel {
         add(panelButtons, BorderLayout.SOUTH);
 
         // Tabla
-        tableModel = new MascotaTableModel(new ArrayList<>());
+        tableModel = new PetTableModel(new ArrayList<>());
         tblMascotas = new JTable(tableModel);
         tblMascotas.setRowHeight(25);
         tblMascotas.setFillsViewportHeight(true);

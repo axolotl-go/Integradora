@@ -5,11 +5,11 @@ import test.org.example.model.Pet;
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
-public class MascotaTableModel extends AbstractTableModel {
+public class PetTableModel extends AbstractTableModel {
     private final String[] columnNames = {"ID", "Nombre", "Especie", "Raza", "Edad", "Dueño"};
     private List<Pet> mascotas;
 
-    public MascotaTableModel(List<Pet> mascotas) {
+    public PetTableModel(List<Pet> mascotas) {
         this.mascotas = mascotas;
     }
 
